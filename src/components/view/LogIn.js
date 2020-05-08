@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Fire from "../config/Fire";
+import Fire from "../../config/Fire";
 
 class LogIn extends Component {
   signin(e) {

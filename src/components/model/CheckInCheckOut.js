@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./CheckInCheckOut.css";
-import Details from "./Details";
+import Details from "../view/Details";
 import * as firebase from "firebase";
-import "../config/Fire";
+import "../../config/Fire";
 
 function CheckInCheckOut({ match }) {
   const [datas, setDatas] = useState([]);

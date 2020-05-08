@@ -22,7 +22,7 @@
   margin: 0px;
   padding: 2px;
   overflow: hidden;
-  background-image: url("../img/background.jpg");
+  background-image: url("../../img/background.jpg");
   background-size: cover;
   border-radius: 5px;
   z-index: 20;

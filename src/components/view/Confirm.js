@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import * as firebase from "firebase";
-import firebaseDb from "../config/Fire";
+import firebaseDb from "../../config/Fire";
 
 const Confirm = ({ getData }) => {
   console.log("C: " + getData.address);

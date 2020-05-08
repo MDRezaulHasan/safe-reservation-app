@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Form from "./Form";
+import Form from "../view/Form";
 
 import { v4 as uuidv4 } from "uuid";
 

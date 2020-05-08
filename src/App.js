@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Forecast from "./components/Forecast";
+import Forecast from "./components/model/Forecast";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Details from "./components/Details";
-import LogIn from "./components/LogIn";
+import Details from "./components/view/Details";
+import LogIn from "./components/view/LogIn";
 import Fire from "./config/Fire";
-import CheckInCheckOut from "./components/CheckInCheckOut";
+import CheckInCheckOut from "./components/model/CheckInCheckOut";
 
 import "./App.css";
 
