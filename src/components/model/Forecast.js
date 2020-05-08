@@ -21,7 +21,7 @@ class Forcast extends Component {
         headers: {
           "x-rapidapi-host": "hotels4.p.rapidapi.com",
           "x-rapidapi-key":
-            "3f70a06836msh9d83d8dd7bfeeb8p14ddefjsna687fd42dced",
+            "",
         },
       }
     )
