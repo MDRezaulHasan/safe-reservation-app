@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 var firebaseConfig = {
-  apiKey: "AIzaSyCCmJ6CfqASihwm_AafC7u-4RYfkCKv5gk",
+  apiKey: "",
   authDomain: "safe-reservation-app.firebaseapp.com",
   databaseURL: "https://safe-reservation-app.firebaseio.com",
   projectId: "safe-reservation-app",
