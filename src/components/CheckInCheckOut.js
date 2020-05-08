@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./CheckInCheckOut.css";
 import Details from "./Details";
+import * as firebase from "firebase";
+import "../config/Fire";
 
 function CheckInCheckOut({ match }) {
   const [datas, setDatas] = useState([]);
@@ -9,6 +12,8 @@ function CheckInCheckOut({ match }) {
     const checkInId = document.getElementById("checkInId").value;
     const checkOutId = document.getElementById("checkOutId").value;
     const adultsId = document.getElementById("adultsId").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const rooms = document.getElementById("rooms").value;
     console.log(checkInId, checkOutId, adultsId);
 
     const dataForCheckInCheckOut = await fetch(
@@ -18,7 +23,7 @@ function CheckInCheckOut({ match }) {
         headers: {
           "x-rapidapi-host": "hotels4.p.rapidapi.com",
           "x-rapidapi-key":
-            "ffd30b4aecmshebc72ac36f6a2b1p16ee13jsn2c5864f12f9a",
+            "3f70a06836msh9d83d8dd7bfeeb8p14ddefjsna687fd42dced",
         },
       }
     )
@@ -28,6 +33,15 @@ function CheckInCheckOut({ match }) {
       });
     setDatas(dataForCheckInCheckOut.data.body.searchResults.results);
     console.log(dataForCheckInCheckOut.data.body.searchResults.results);
+
+    //saving data into firebase
+    firebase.database().ref("booking").push({
+      checkIn: checkInId,
+      checkOut: checkOutId,
+      adult: adultsId,
+      phoneNumber: phoneNumber,
+      rooms: rooms,
+    });
   };
   const bookReservation = (e) => {
     e.preventDefault();
@@ -38,6 +52,9 @@ function CheckInCheckOut({ match }) {
     <div id="booking" className="section">
       <div className="section-center">
         <div className="container">
+          <button>
+            <Link to="/">Back to home</Link>
+          </button>
           <div className="row">
             <div className="booking-form">
               <div className="form-header">
@@ -51,6 +68,7 @@ function CheckInCheckOut({ match }) {
                         id="checkInId"
                         className="form-control"
                         type="date"
+                        required
                       />
                       <span className="form-label">Check In</span>
                     </div>
@@ -61,6 +79,7 @@ function CheckInCheckOut({ match }) {
                         id="checkOutId"
                         className="form-control"
                         type="date"
+                        required
                       />
                       <span className="form-label">Check out</span>
                     </div>
@@ -69,8 +88,13 @@ function CheckInCheckOut({ match }) {
                 <div className="row">
                   <div className="col-md-4">
                     <div className="form-group">
-                      <input type="text" id="rooms" className="form-control" />
-                      <span className="select-arrow"></span>
+                      <input
+                        type="text"
+                        id="rooms"
+                        className="form-control"
+                        placeholder="Room number"
+                        required
+                      />
                       <span className="form-label">Rooms</span>
                     </div>
                   </div>
@@ -81,9 +105,8 @@ function CheckInCheckOut({ match }) {
                         className="form-control"
                         type="text"
                         placeholder="Adults number"
+                        required
                       />
-                      <span className="select-arrow"></span>
-                      <span className="form-label">Adults</span>
                     </div>
                   </div>
                 </div>
@@ -91,19 +114,11 @@ function CheckInCheckOut({ match }) {
                   <div className="col-md-6">
                     <div className="form-group">
                       <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Enter your Email"
-                      />
-                      <span className="form-label">Email</span>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
+                        id="phoneNumber"
                         className="form-control"
                         type="tel"
                         placeholder="Enter you Phone"
+                        required
                       />
                       <span className="form-label">Phone</span>
                     </div>

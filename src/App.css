@@ -9,10 +9,18 @@ img {
 
 a {
   color: #e74c3c !important;
+  font-size: 1em;
 }
 
-button:focus {
-  outline: none;
+.btnSignout {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background-color: #010911;
+  font-style: italic;
+  color: #40b48e;
+  border: none;
+  border-radius: 0.5rem;
+  height: 0.5rem;
 }
 
 .App {
@@ -118,7 +126,6 @@ input:-webkit-autofill {
 
 .active-recipe__img {
   height: 200px !important;
-
 }
 
 .active-recipe__title {

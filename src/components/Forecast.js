@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./Form";
+
 import { v4 as uuidv4 } from "uuid";
 
 import { Link } from "react-router-dom";
@@ -20,7 +21,7 @@ class Forcast extends Component {
         headers: {
           "x-rapidapi-host": "hotels4.p.rapidapi.com",
           "x-rapidapi-key":
-            "ffd30b4aecmshebc72ac36f6a2b1p16ee13jsn2c5864f12f9a",
+            "3f70a06836msh9d83d8dd7bfeeb8p14ddefjsna687fd42dced",
         },
       }
     )
@@ -35,13 +36,23 @@ class Forcast extends Component {
     console.log(locationName);
   };
 
+  // signout() {
+  //   Fire.auth().signOut();
+  // }
+
   render() {
     //JSX code will go here
     return (
       <div>
-        <Form getForcast={this.getForcast} />
-        <h3>{this.state.term}</h3>
-        <h4>Please select a City type.</h4>
+        <div>
+          <Form getForcast={this.getForcast} />
+          <h3>{this.state.term}</h3>
+          <button>
+            <Link to="/">Back to home</Link>
+          </button>
+          <p>You are logged in.</p>
+        </div>
+
         {this.state.suggestions.map((suggestion) => {
           return (
             <div key={uuidv4()} className="row">
@@ -51,16 +62,20 @@ class Forcast extends Component {
               <div className="col-4">
                 {suggestion.entities.map((entitie) => {
                   return (
-                    <div className="row">
-                      <div className="col-4">
-                        <h6>{entitie.name}</h6>
+                    entitie.type === "CITY" && (
+                      <div className="row" key={uuidv4()}>
+                        <div className="col-4">
+                          <h6>{entitie.name}</h6>
+                        </div>
+                        <div className="col-4">
+                          <Link
+                            to={`/checkincheckout/${entitie.destinationId}`}
+                          >
+                            {entitie.type}
+                          </Link>
+                        </div>
                       </div>
-                      <div className="col-4">
-                        <Link to={`/checkincheckout/${entitie.destinationId}`}>
-                          {entitie.type}
-                        </Link>
-                      </div>
-                    </div>
+                    )
                   );
                 })}
               </div>
